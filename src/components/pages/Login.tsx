@@ -2,12 +2,12 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const styles = {
-  root: {
-    display: "flex",
-    minHeight: "100vh",
-  },
-};
+// const styles = {
+//   root: {
+//     display: "flex",
+//     minHeight: "100vh",
+//   },
+// };
 
 export default function Login() {
   const [username, setUsername] = useState("");
