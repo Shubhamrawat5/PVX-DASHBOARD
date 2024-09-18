@@ -4,39 +4,48 @@ import Sidebar from "@/components/organisms/Sidebar";
 import LoginPage from "@/pages/LoginPage";
 import GroupsPage from "@/pages/GroupsPage";
 import MembersPage from "@/pages/MembersPage";
-import BirthdaysPage from "./pages/BirthdaysPage";
-
-function Layout() {
-  return (
-    <>
-      <div className="flex min-h-screen">
-        <Sidebar />
-        <div className="w-full">
-          <Header />
-          <div className="p-8">
-            <Outlet />
-          </div>
-        </div>
-      </div>
-    </>
-  );
-}
+import BirthdaysPage from "@/pages/BirthdaysPage";
+import DonationsPage from "@/pages/DonationsPage";
 
 function App() {
-  const paths = {
-    members: {
+  const routes = [
+    {
+      name: "Members",
       path: "/dashboard/members",
       element: <MembersPage />,
     },
-    groups: {
+    {
+      name: "Groups",
       path: "/dashboard/groups",
       element: <GroupsPage />,
     },
-    birthdays: {
+    {
+      name: "Birthdays",
       path: "/dashboard/birthdays",
       element: <BirthdaysPage />,
     },
-  };
+    {
+      name: "Donations",
+      path: "/dashboard/donations",
+      element: <DonationsPage />,
+    },
+  ];
+
+  function Layout() {
+    return (
+      <>
+        <div className="flex min-h-screen">
+          <Sidebar routes={routes} />
+          <div className="w-full">
+            <Header />
+            <div className="p-8">
+              <Outlet />
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   const router = createBrowserRouter([
     {
@@ -45,20 +54,9 @@ function App() {
     },
     {
       element: <Layout />,
-      children: [
-        {
-          path: paths.members.path,
-          element: paths.members.element,
-        },
-        {
-          path: paths.groups.path,
-          element: paths.groups.element,
-        },
-        {
-          path: paths.birthdays.path,
-          element: paths.birthdays.element,
-        },
-      ],
+      children: routes.map((route) => {
+        return { path: route.path, element: route.element };
+      }),
     },
   ]);
 
