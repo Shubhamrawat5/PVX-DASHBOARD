@@ -1,11 +1,11 @@
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Header from "@/components/organisms/Header";
 import Sidebar from "@/components/organisms/Sidebar";
-import LoginPage from "@/pages/LoginPage";
-import GroupsPage from "@/pages/GroupsPage";
-import MembersPage from "@/pages/MembersPage";
-import BirthdaysPage from "@/pages/BirthdaysPage";
-import DonationsPage from "@/pages/DonationsPage";
+import LoginPage from "@/components/pages/LoginPage";
+import GroupsPage from "@/components/pages/GroupsPage";
+import MembersPage from "@/components/pages/MembersPage";
+import BirthdaysPage from "@/components/pages/BirthdaysPage";
+import DonationsPage from "@/components/pages/DonationsPage";
 
 function App() {
   const routes = [
