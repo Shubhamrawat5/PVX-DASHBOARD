@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { loginFormSchema } from "./schema";
+import { loginFormSchema } from "@/components/organisms/Login/schema";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
@@ -22,8 +22,8 @@ export default function Login() {
   const form = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
-      username: "",
-      password: "",
+      username: "admin",
+      password: "admin",
     },
   });
 
@@ -36,7 +36,7 @@ export default function Login() {
 
     if (username === "admin" && password === "admin") {
       console.log("Correct login details");
-      navigate("/dashboard");
+      navigate("/dashboard/groups");
     } else {
       setError("wrong credentials!");
     }

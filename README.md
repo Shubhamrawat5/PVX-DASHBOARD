@@ -1,4 +1,4 @@
-# PVX DASHBOARD :rocket
+# PVX DASHBOARD 🚀
 
 Admin dashboard for [PVX Website](https://pvxcommunity.com) !
 
