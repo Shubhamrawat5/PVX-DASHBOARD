@@ -7,27 +7,43 @@ import MembersPage from "@/components/pages/MembersPage";
 import BirthdaysPage from "@/components/pages/BirthdaysPage";
 import DonationsPage from "@/components/pages/DonationsPage";
 
+import { LiaBirthdayCakeSolid } from "react-icons/lia";
+import { MdOutlineCurrencyRupee, MdGroup } from "react-icons/md";
+import { FaUser } from "react-icons/fa6";
+import { ReactNode } from "react";
+
+export interface Routes {
+  name: string;
+  path: string;
+  element: JSX.Element;
+  icon?: ReactNode;
+}
+
 function App() {
-  const routes = [
+  const routes: Routes[] = [
     {
       name: "Members",
       path: "/dashboard/members",
       element: <MembersPage />,
+      icon: <FaUser />,
     },
     {
       name: "Groups",
       path: "/dashboard/groups",
       element: <GroupsPage />,
+      icon: <MdGroup />,
     },
     {
       name: "Birthdays",
       path: "/dashboard/birthdays",
       element: <BirthdaysPage />,
+      icon: <LiaBirthdayCakeSolid />,
     },
     {
       name: "Donations",
       path: "/dashboard/donations",
       element: <DonationsPage />,
+      icon: <MdOutlineCurrencyRupee />,
     },
   ];
 

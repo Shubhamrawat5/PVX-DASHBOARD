@@ -23,7 +23,7 @@ export default function Login() {
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
       username: "admin",
-      password: "admin",
+      password: "admin@123",
     },
   });
 
@@ -34,9 +34,9 @@ export default function Login() {
 
     const { username, password } = values;
 
-    if (username === "admin" && password === "admin") {
+    if (username === "admin" && password === "admin@123") {
       console.log("Correct login details");
-      navigate("/dashboard/groups");
+      navigate("/dashboard/members");
     } else {
       setError("wrong credentials!");
     }
