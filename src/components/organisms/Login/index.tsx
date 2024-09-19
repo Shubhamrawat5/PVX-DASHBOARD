@@ -36,7 +36,7 @@ export default function Login() {
 
     if (username === "admin" && password === "admin@123") {
       console.log("Correct login details");
-      navigate("/dashboard/members");
+      navigate("/dashboard");
     } else {
       setError("wrong credentials!");
     }
