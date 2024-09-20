@@ -16,6 +16,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import { Button } from "../ui/button";
 
 interface Props {
   columnsName: {
@@ -23,17 +24,25 @@ interface Props {
     mapper: string;
   }[];
   columnsData: {
-    [key: string]: string | number;
+    id: string;
+    [key: string]: string | number | boolean;
   }[];
+  onEdit?: (id: string) => void;
+  onDelete?: (id: string) => void;
+  showEdit?: boolean;
+  showDelete?: boolean;
 }
 
 export function TableCustom(props: Props) {
-  const { columnsData, columnsName } = props;
+  const { columnsData, columnsName, onEdit, onDelete, showEdit, showDelete } =
+    props;
+
+  const totalColumns = columnsName.length + (showEdit || showDelete ? 1 : 0);
 
   return (
-    <Table className="overflow-hidden bg-secondary">
+    <Table className="overflow-hidden bg-secondary tr">
       <TableHeader>
-        <TableRow>
+        <TableRow className="border-border-color">
           {columnsName.map((columnName, index) => (
             <TableHead key={index}>{columnName.name}</TableHead>
           ))}
@@ -41,7 +50,7 @@ export function TableCustom(props: Props) {
       </TableHeader>
       <TableBody>
         {columnsData.map((columnData, columnIndex) => (
-          <TableRow key={columnData.id}>
+          <TableRow key={columnIndex} className="border-border-color">
             {Object.keys(columnData).map((column, index) => {
               return (
                 <TableCell className="font-medium" key={index}>
@@ -49,12 +58,32 @@ export function TableCustom(props: Props) {
                 </TableCell>
               );
             })}
+            {(showEdit || showDelete) && (
+              <TableCell className="text-right">
+                {showEdit && onEdit && (
+                  <Button
+                    onClick={() => onEdit(columnData.id)}
+                    className="ml-6"
+                  >
+                    Edit
+                  </Button>
+                )}
+                {showDelete && onDelete && (
+                  <Button
+                    onClick={() => onDelete(columnData.id)}
+                    className="ml-6"
+                  >
+                    Delete
+                  </Button>
+                )}
+              </TableCell>
+            )}
           </TableRow>
         ))}
       </TableBody>
-      <TableFooter>
-        <TableRow>
-          <TableCell colSpan={columnsName.length}>
+      <TableFooter className="border-none bg-primary">
+        <TableRow className="border-border-color">
+          <TableCell colSpan={totalColumns}>
             <Pagination>
               <PaginationContent>
                 <PaginationItem>

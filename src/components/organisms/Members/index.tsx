@@ -44,9 +44,18 @@ export default function Members() {
     },
   ];
 
+  const handleDelete = (id: string) => {
+    console.log(`Delete item with ID: ${id}`);
+  };
+
   return (
     <div>
-      <TableCustom columnsName={columnsName} columnsData={columnsData} />
+      <TableCustom
+        columnsName={columnsName}
+        columnsData={columnsData}
+        onDelete={handleDelete}
+        showDelete={true}
+      />
     </div>
   );
 }

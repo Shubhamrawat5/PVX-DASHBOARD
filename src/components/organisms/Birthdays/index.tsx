@@ -62,9 +62,24 @@ export default function Birthdays() {
     },
   ];
 
+  const handleEdit = (id: string) => {
+    console.log(`Edit item with ID: ${id}`);
+  };
+
+  const handleDelete = (id: string) => {
+    console.log(`Delete item with ID: ${id}`);
+  };
+
   return (
     <div>
-      <TableCustom columnsName={columnsName} columnsData={columnsData} />
+      <TableCustom
+        columnsName={columnsName}
+        columnsData={columnsData}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+        showEdit={true}
+        showDelete={true}
+      />
     </div>
   );
 }

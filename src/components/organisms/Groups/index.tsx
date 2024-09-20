@@ -38,9 +38,18 @@ export default function Groups() {
     },
   ];
 
+  const handleEdit = (id: string) => {
+    console.log(`Edit item with ID: ${id}`);
+  };
+
   return (
     <div>
-      <TableCustom columnsName={columnsName} columnsData={columnsData} />
+      <TableCustom
+        columnsName={columnsName}
+        columnsData={columnsData}
+        onEdit={handleEdit}
+        showEdit={true}
+      />
     </div>
   );
 }
