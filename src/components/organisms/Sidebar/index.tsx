@@ -21,7 +21,7 @@ export default function Sidebar(props: Props) {
         <NavigationMenuList className="flex-col gap-4">
           {routes.map((route) => {
             return (
-              <Link to={route.path} key={route.name}>
+              <Link to={route.path} key={route.name} className="w-full">
                 <NavigationMenuItem
                   className={
                     "min-w-20 text-center p-2 rounded w-full " +
